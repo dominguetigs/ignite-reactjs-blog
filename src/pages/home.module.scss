@@ -28,24 +28,6 @@
       margin-bottom: 1.5rem;
     }
 
-    div {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-
-      time,
-      span {
-        display: flex;
-        align-items: center;
-
-        span {
-          margin-left: 0.5rem;
-          font-size: 0.875rem;
-          color: var(--gray-300);
-        }
-      }
-    }
-
     &:hover {
       strong {
         color: var(--pink);

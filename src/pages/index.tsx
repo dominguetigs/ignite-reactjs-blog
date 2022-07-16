@@ -44,13 +44,7 @@ function formatPostsPagination(
         subtitle: result.data.subtitle,
         author: result.data.author,
       },
-      first_publication_date: format(
-        new Date(result.first_publication_date),
-        'PP',
-        {
-          locale: ptBR,
-        }
-      ),
+      first_publication_date: result.first_publication_date,
     })),
   };
 }
@@ -80,14 +74,18 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
       <main className={styles.container}>
         <div className={`${styles.posts} ${commonStyles.contentWidth}`}>
           {posts.map(post => (
-            <Link key={post.uid} href={`/posts/${post.uid}`}>
+            <Link key={post.uid} href={`/post/${post.uid}`}>
               <a>
                 <strong>{post.data.title}</strong>
                 <p>{post.data.subtitle}</p>
-                <div>
+                <div className={commonStyles.postDescriptions}>
                   <time>
-                    <FiCalendar size={20} />{' '}
-                    <span>{post.first_publication_date}</span>
+                    <FiCalendar size={20} />
+                    <span>
+                      {format(new Date(post.first_publication_date), 'PP', {
+                        locale: ptBR,
+                      })}
+                    </span>
                   </time>
                   <span>
                     <FiUser size={20} /> <span>{post.data.author}</span>
